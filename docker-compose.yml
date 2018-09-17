@@ -1,0 +1,8 @@
+version: '3.4'
+
+services:
+  superapp.api:
+    image: ${DOCKER_REGISTRY}superappapi
+    build:
+      context: .
+      dockerfile: ../SuperApp.Api/Dockerfile

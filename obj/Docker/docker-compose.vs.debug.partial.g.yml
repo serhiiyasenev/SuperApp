@@ -1,0 +1,20 @@
+version: '3.4'
+
+services:
+  superapp.api:
+    image: superappapi:dev
+    build:
+      target: base
+    environment:
+      - DOTNET_USE_POLLING_FILE_WATCHER=1
+      #- NUGET_FALLBACK_PACKAGES=$container_paths_to_fallback_packages_superapp.api$
+    volumes:
+      - C:\Users\Serhii_Yasenev\source\repos\SuperApp.Api:/app
+      - C:\Users\Serhii_Yasenev\vsdbg\vs2017u5:/remote_debugger:ro
+#$nuget_volume_mapping_superapp.api$
+    entrypoint: tail -f /dev/null
+    labels:
+      com.microsoft.visualstudio.debuggee.program: "dotnet"
+      #com.microsoft.visualstudio.debuggee.arguments: " $debuggee_arguments_probing_paths_superapp.api$ bin/Debug/netcoreapp2.1/SuperApp.Api.dll"
+      com.microsoft.visualstudio.debuggee.workingdirectory: "/app"
+      com.microsoft.visualstudio.debuggee.killprogram: "/bin/bash -c \"if PID=$$(pidof -x dotnet); then kill $$PID; fi\""
