@@ -1,0 +1,19 @@
+# Keep generated output and local tooling state out of Git.
+# Already tracked files must be explicitly removed from the index separately.
+**/bin/
+**/obj/
+.vs/
+*.user
+*.suo
+*.cache
+*.publishsettings
+
+# Never commit local secrets or private keys.
+.env
+.env.*
+!.env.example
+*.pfx
+*.p12
+*.pem
+*.key
+secrets.json
