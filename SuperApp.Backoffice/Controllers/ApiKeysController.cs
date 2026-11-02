@@ -7,6 +7,7 @@ using System.Web.Mvc;
 
 namespace SuperApp.Backoffice.Controllers
 {
+    [Authorize]
     public class ApiKeysController : Controller
     {
         private ApplicationDbContext db = new ApplicationDbContext();
