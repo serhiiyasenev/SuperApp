@@ -7,7 +7,9 @@ using System.Web.Mvc;
 
 namespace SuperApp.Backoffice.Controllers
 {
-    [Authorize]
+    // API key inventory and management must be limited to trusted administrators.
+    // Provision the Admin role explicitly before deploying this change.
+    [Authorize(Roles = "Admin")]
     public class ApiKeysController : Controller
     {
         private ApplicationDbContext db = new ApplicationDbContext();
